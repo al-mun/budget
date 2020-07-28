@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Monthly Budget App</h1>
+
+<div class="container">
+
+
+    <!-- Income Section -->
+    <div class="income-section">
+        <h2>Income</h2>
+        <label for="income">Enter your monthly income</label><br>
+
+        <p class="income-message"></p>
+
+        <input type="number" id="income" step="0.01" min="0">
+        <button id="income-enter">Enter</button><br>
+        <p>Income:</p><p id="income-output">0</p>
+        <p>Left over money:</p><p id="difference"></p>
+        <p>Total Expenses: </p><p id="total-expenses"></p>
+    </div>
+
+    <!-- Add expenses section -->
+    <div class="expense-section">
+        <h2>Add an expense</h2>
+
+        <label for="expenses">Enter an expense title</label><br>
+        <input type="text" id="expense-title"><br>
+        
+        <br>
+
+        <label for="expenses">Enter an expense amount</label><br>
+        <input type="number" id="expense-amount" step="0.01" min="0">
+        <br>
+        <br>
+        <label for="category">Please choose a category</label><br>
+        <select id="category">
+            <option></option>
+            <option value="1">Bills</option>
+            <option value="2">Grocery/Household</option>
+            <option value="3">Fun</option>
+            <option value="4">Emergency</option>
+        </select>
+        <br>
+        <br>
+        <button id="expense-enter">Enter</button><p class="expense-message"></p><br>
+    </div>
+    
+    <!-- Expense items section -->
+    <div class="expense-categories">
+
+
+        <div>
+            <div class="header">
+                <h3>Bills</h3>
+                <p id="bills-total"></p>
+            </div>
+            <div class="bills"></div>
+
+            <!-- <div class="bill-item">
+                    <p> -${expense.title} $${expense.amount}</p>
+                    <a href="" ><i id="deleteButton">d</i></a>
+                </div> -->
+            
+        </div>
+
+        <div>
+            <div class="header">
+                <h3>Grocery/Household</h3>
+                <p id="grocery-total"></p>
+            </div>
+            <div class="grocery bills"></div>
+        </div>
+
+        <div>
+            <div class="header">
+                <h3>Fun</h3>
+                <p id="fun-total"></p>
+            </div>
+            <div class="fun bills"></div>
+        </div>
+
+        <div>
+            <div class="header">
+                <h3>Emergency</h3>
+                <p id="emergency-total"></p>
+            </div>
+            <div class="emergency bills"></div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+<script src="test.js"></script>
+</html>
