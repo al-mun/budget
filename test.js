@@ -168,9 +168,9 @@ function deleteExpense(element){
 
     let parent = element.parentElement.parentElement.parentElement.parentElement;
       //remove from the dom
-    this.expenseList.removeChild(parent);
+    expenseList.removeChild(parent);
 
-      showTotal();
+    showTotal();
     //When we click the delete button, run function deleteExpense()
     //delete expense will then remove that same bill-item div from bills
 
