@@ -73,7 +73,10 @@ function outputExpense(){
             let billsDiv = document.createElement('div');
             billsDiv.innerHTML = `<div class="bill-item">
             <p> -${expense.title} $${expense.amount}</p>
-            <a><i id="deleteButton" onclick="deleteExpense()">d</i></a>
+            <div class="buttons">
+            <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">delete</i></a>
+            <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">modify</i></a>
+            </div>
             </div>`;
             document.querySelector(".bills").appendChild(billsDiv);
             billsList.push(expense); 
@@ -83,6 +86,10 @@ function outputExpense(){
             let groceryDiv = document.createElement('div');
             groceryDiv.innerHTML = `<div class="bill-item">
             <p> -${expense.title} $${expense.amount}</p>
+            <div class="buttons">
+            <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">delete</i></a>
+            <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">modify</i></a>
+            </div>
             </div>`;
             document.querySelector(".grocery").appendChild(groceryDiv);
             groceryList.push(expense);
@@ -92,6 +99,10 @@ function outputExpense(){
             let funDiv = document.createElement('div');
             funDiv.innerHTML = `<div class="bill-item">
             <p> -${expense.title} $${expense.amount}</p>
+            <div class="buttons">
+            <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">delete</i></a>
+            <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">modify</i></a>
+            </div>
             </div>`;
             document.querySelector(".fun").appendChild(funDiv);
             funList.push(expense);
@@ -101,6 +112,10 @@ function outputExpense(){
             let emergencyDiv = document.createElement('div');
             emergencyDiv.innerHTML = `<div class="bill-item">
             <p> -${expense.title} $${expense.amount}</p>
+            <div class="buttons">
+            <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">delete</i></a>
+            <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">modify</i></a>
+            </div>
             </div>`;
             document.querySelector(".emergency").appendChild(emergencyDiv);
             emergencyList.push(expense);
@@ -121,7 +136,7 @@ function billsExpenses(){
     }, 0);
     }
     //Show the total on the output
-  billsTotal.innerHTML = `Total: $${totalBills}`;
+  billsTotal.innerHTML = `<h4>Total: $${totalBills}</h4>`;
   return totalBills;
 }
 function groceryExpenses(){
@@ -133,7 +148,7 @@ function groceryExpenses(){
     }, 0);
     }
     //Show the total on the output
-  groceryTotal.innerHTML = `Total: $${totalGrocery}`;
+  groceryTotal.innerHTML = `<h4>Total: $${totalGrocery}</h4>`;
   return totalGrocery;
 }
 function funExpenses(){
@@ -145,7 +160,7 @@ function funExpenses(){
     }, 0);
     }
     //Show the total on the output
-  funTotal.innerHTML = `Total: $${totalFun}`;
+  funTotal.innerHTML = `<h4>Total: $${totalFun}</h4>`;
   return totalFun;
 }
 function emergencyExpenses(){
@@ -157,25 +172,10 @@ function emergencyExpenses(){
     }, 0);
     }
     //Show the total on the output
-  emergencyTotal.innerHTML = `Total: $${totalEmergency}`;
+  emergencyTotal.innerHTML = `<h4>Total: $${totalEmergency}</h4>`;
   return totalEmergency;
 }
 /////////////////////////////////////////////////////////////////////////////////
-
-
-function deleteExpense(element){
-
-
-    let parent = element.parentElement.parentElement.parentElement.parentElement;
-      //remove from the dom
-    expenseList.removeChild(parent);
-
-    showTotal();
-    //When we click the delete button, run function deleteExpense()
-    //delete expense will then remove that same bill-item div from bills
-
-}
-
 
 //calculate the total of the exepenses
 function totalExpense(){
@@ -207,11 +207,42 @@ function showTotal(){
     //console.log(expense);
 }
 
-
 //event listeners
 incomeEnter.addEventListener("click", ()=>{
     outputIncome();         
 });
 expenseEnter.addEventListener("click", ()=>{   
     outputExpense();    //run function when enter is clicked
+    console.log(expenseList);
 });
+
+function deleteExpense(element){
+    let id = parseFloat(element.dataset.id);
+    //console.log(id);
+    let parent = element.parentElement.parentElement.parentElement;
+    //remove from the dom
+    //console.log(parent);
+    billItem.removeChild(parent);
+
+    //remove from the list
+    let tempList = expenseList.filter(function(expense) {
+      return expense.id !== id;
+     });
+     expenseList = tempList;
+     console.log(expenseList);
+     showTotal();
+  }
+function modifyExpense(){
+    console.log("you clicked modify");
+}
+
+billItem = document.getElementById("bill-line");
+expenseCategories = document.getElementById("expense-categories");
+expenseCategories.addEventListener("click", function(event){
+    if(event.target.parentElement.classList.contains("modify-button")){
+      modifyExpense(event.target.parentElement)
+    }
+    else if(event.target.parentElement.classList.contains("delete-button")){
+      deleteExpense(event.target.parentElement)
+  }
+  });

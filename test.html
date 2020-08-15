@@ -7,13 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Monthly Budget App</h1>
+    <h1>Monthly Budget App</h1> <i>Work in progress</i>
 
 <div class="container">
 
 
     <!-- Income Section -->
-    <div class="income-section">
+    <div class="income-section boxes">
         <h2>Income</h2>
         <label for="income">Enter your monthly income</label><br>
 
@@ -27,7 +27,7 @@
     </div>
 
     <!-- Add expenses section -->
-    <div class="expense-section">
+    <div class="expense-section boxes">
         <h2>Add an expense</h2>
 
         <label for="expenses">Enter an expense title</label><br>
@@ -53,21 +53,19 @@
     </div>
     
     <!-- Expense items section -->
-    <div class="expense-categories">
-
+    <div class="expense-categories boxes" id="expense-categories">
 
         <div>
             <div class="header">
                 <h3>Bills</h3>
                 <p id="bills-total"></p>
             </div>
-            <div class="bills"></div>
+            <div class="bills" id="bill-line"></div>
 
             <!-- <div class="bill-item">
                     <p> -${expense.title} $${expense.amount}</p>
                     <a href="" ><i id="deleteButton">d</i></a>
                 </div> -->
-            
         </div>
 
         <div>
