@@ -1,24 +1,86 @@
-
+:root {
+    --mainWhite: #f1f1f1f5;
+    --mainDark: #333333;
+    --mainGreen: #317b22;
+    --mainRed: #b80c09;
+    --mainBlue: #05668d;
+  }
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #c9e0cf;
+    background: var(--mainWhite);
+    color: var(--mainDark);
+}
+p, h2, h3, h4{
+    color: var(--mainDark);
+}
+.title{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: auto;
+    max-width: 1200px;
+    gap: 2rem;
+    align-items: center;
+}
+.forms{
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: auto;
+}
+.section{
+    border: 0.15rem solid var(--mainRed);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    max-width: 300px;
+}
+.income{
+    border: 0.15rem solid var(--mainGreen);
 }
 .income-message, .expense-message{
     display: none;
 }
 .show-message{
     display: block;
-    color: red;
+    color: var(--mainRed);
     font-weight: bold;
 }
-.container{
+.summary-expenses{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 0.2rem;
+    align-self: baseline;
+}
+.summary{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: center;
+    grid-template-columns: repeat(3, minmax(20px, 145px));
+}
+.summary-total{
+    display:grid;
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.icon{
+    color: var(--mainBlue);
+    font-size: 2.5rem;
+}
+.income-text{
+    color: var(--mainGreen);
+    font-weight: bold;
 }
 .expense-categories{
     display: grid;
-    grid-template-columns: repeat();
+    grid-template-rows: repeat(auto-fit, minmax(10px, 55px));
+    border: 0.15rem solid var(--mainBlue);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    max-width: 400px;
+    align-self: flex-start;
 }
 .bill-item{
     text-align: left;
@@ -26,28 +88,27 @@ body{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
+    height: 25px;
 }
 .bills{
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    
 } 
 .header{
+    height: 55px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
-
 }
 .delete-modify{
     display: grid;
     grid-template-rows: repeat(2, 1fr);
 }
 .good{
-    color: green;
+    color: var(--mainGreen);
     font-weight: bold;
 }
 .bad{
-    color: red;
+    color: var(--mainRed);
     font-weight: bold;
 }
 #deletebutton, #modifyButton{
@@ -55,12 +116,8 @@ body{
     font-style: normal;
 }
 .delete-button{
-    color: red;
+    color: var(--mainRed)
 }
 
-.boxes{
-    padding: 0.5rem;
-    background: #99ceb0;
-}
 
 
