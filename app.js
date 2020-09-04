@@ -34,8 +34,7 @@ class UI {
   showTotal(){
     const expense = this.totalExpense();  //totalExpense adds everything & returns a number 
     const total = parseFloat(this.incomeOutput.textContent) - expense;
-    difference.innerHTML = `$${total.toFixed(2)}`; //display difference
-  
+    difference.innerHTML = `${total}`; //display difference
     if (total > 0 ){
       difference.classList.add("good");
       difference.classList.remove("bad");
@@ -44,7 +43,8 @@ class UI {
       difference.classList.add("bad");
       difference.classList.remove("good");
     }
-  } 
+    return total;
+  }
   outputIncome(){
     const value = this.income.value;     //assigned a variable to the user's input
     if(value ==="" || value <= 0){
@@ -55,13 +55,12 @@ class UI {
         }, 3000);
     }
     else{
-    this.incomeOutput.innerHTML = `${value}`;
+    this.incomeOutput.innerHTML = value;
     this.income.value = "";      //clear income field after enter
     this.showTotal();
     }
   }
-  //add an expense
-  /////////////////////////////////////////////////////////////////////////////////////////////
+  //add an expense/////////////////////////////////////////////////////////////////////////////////////////////
   outputExpense(){
     //first the user's inputs are assigned values
     let title = this.title.value;
@@ -91,24 +90,25 @@ class UI {
         if (this.option === "Bills"){
             const billsDiv = document.createElement('div');   //initialize here to allow creation of multiple lines
             billsDiv.innerHTML = `<div class="bill-item">
-            <p> -${expense.title} $${expense.amount}</p>
+            <p> ${expense.title}</p>
+            <p>$${expense.amount}</p>
             <div class="buttons">
-            <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
-            <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">Modify</i></a>
+              <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">Modify</i></a>
+              <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
             </div>
             </div>`;
             this.billsCat.appendChild(billsDiv);
             this.billsList.push(expense);
             this.billsExpenses();
-            
          }
         else if (this.option === "Grocery/Household"){
           const groceryDiv = document.createElement('div');
           groceryDiv.innerHTML = `<div class="bill-item">
-          <p> -${expense.title} $${expense.amount}</p>
+          <p> ${expense.title}</p>
+          <p> $${expense.amount}</p>
           <div class="buttons">
-          <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
           <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">Modify</i></a>
+          <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
           </div>
           </div>`;
           this.groceryCat.appendChild(groceryDiv);
@@ -118,10 +118,11 @@ class UI {
         else if (this.option === "Fun"){
           const funDiv = document.createElement("div");
           funDiv.innerHTML = `<div class="bill-item">
-          <p> -${expense.title} $${expense.amount}</p>
+          <p> ${expense.title}</p>
+          <p> $${expense.amount}</p>
           <div class="buttons">
-          <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
           <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">Modify</i></a>
+          <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
           </div>
           </div>`;
           this.funCat.appendChild(funDiv);
@@ -131,10 +132,11 @@ class UI {
         else if (this.option === "Emergency"){
           const emergencyDiv = document.createElement("div");
           emergencyDiv.innerHTML = `<div class="bill-item">
-          <p> -${expense.title} $${expense.amount}</p>
+          <p> ${expense.title}</p>
+          <p> $${expense.amount}</p>
           <div class="buttons">
-          <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
           <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">Modify</i></a>
+          <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
           </div>
           </div>`;
           this.emergencyCat.appendChild(emergencyDiv);
@@ -206,8 +208,8 @@ class UI {
     }, 0);
     }
     //Show the total on the output
-  this.totalExpenses.innerHTML = `$${total}`;
-  return total.toFixed(2);
+  this.totalExpenses.innerHTML = `${total}`;
+  return total;
   }
   //Calculate left over money!
   modifyBills(element){
@@ -222,7 +224,6 @@ class UI {
     //show value back on the input boxes
     this.title.value = expense[0].title;
     this.expenseAmount.value = expense[0].amount; 
-
     //remove from the list
     let tempList = this.expenseList.filter(function(expense) {
       return expense.id !== id;
@@ -232,7 +233,6 @@ class UI {
        return expense.id !==id;
     });
     this.billsList = billTemp;
-    //console.log(expenseList);
     this.showTotal();
     this.billsExpenses();
   }
@@ -257,7 +257,6 @@ class UI {
        return expense.id !==id;
     });
     this.groceryList = groceryTemp;
-    //console.log(expenseList);
     this.showTotal();
     this.groceryExpenses();
   }
@@ -273,7 +272,6 @@ class UI {
     //show value back on the input boxes
     this.title.value = expense[0].title;
     this.expenseAmount.value = expense[0].amount;      
-
     //remove from the list
     let tempList = this.expenseList.filter(function(expense) {
       return expense.id !== id;
@@ -283,7 +281,6 @@ class UI {
        return expense.id !==id;
     });
     this.funList = funTemp;
-    //console.log(expenseList);
     this.showTotal();
     this.funExpenses();
   }
@@ -296,11 +293,9 @@ class UI {
     let expense = this.emergencyList.filter(function(item){
       return item.id === id;
     });
-
     //show value back on the input boxes
     this.title.value = expense[0].title;
     this.expenseAmount.value = expense[0].amount;      
-
     //remove from the list
     let tempList = this.expenseList.filter(function(expense) {
       return expense.id !== id;
@@ -310,7 +305,6 @@ class UI {
        return expense.id !==id;
     });
     this.emergencyList = emergencyTemp;
-    //console.log(expenseList);
     this.showTotal();
     this.emergencyExpenses();
   }
@@ -321,7 +315,6 @@ class UI {
       let parent = element.parentElement.parentElement.parentElement;
       //remove from the dom
       this.billsCat.removeChild(parent);
-  
       //remove from the list
       let tempList = this.expenseList.filter(function(expense) {
         return expense.id !== id;
@@ -331,12 +324,10 @@ class UI {
          return expense.id !==id;
       });
       this.billsList = billTemp;
-      //console.log(expenseList);
       this.showTotal();
       this.billsExpenses();
     }
   }
-
   deleteGrocery(element){
     let result = confirm("Really? Delete?");
     if(result){
@@ -344,7 +335,6 @@ class UI {
     let parent = element.parentElement.parentElement.parentElement;
     //remove from the dom
     this.groceryCat.removeChild(parent);
-
     //remove from the list
     let tempList = this.expenseList.filter(function(expense) {
       return expense.id !== id;
@@ -354,7 +344,6 @@ class UI {
        return expense.id !==id;
     });
     this.groceryList = groceryTemp;
-    //console.log(expenseList);
     this.showTotal();
     this.groceryExpenses();
   }
@@ -376,7 +365,6 @@ class UI {
        return expense.id !==id;
     });
     this.funList = funTemp;
-    //console.log(expenseList);
     this.showTotal();
     this.funExpenses();
   }
@@ -388,7 +376,6 @@ class UI {
     let parent = element.parentElement.parentElement.parentElement;
     //remove from the dom
     this.emergencyCat.removeChild(parent);
-
     //remove from the list
     let tempList = this.expenseList.filter(function(expense) {
       return expense.id !== id;
@@ -398,13 +385,11 @@ class UI {
        return expense.id !==id;
     });
     this.emergencyList = emergencyTemp;
-    //console.log(expenseList);
     this.showTotal();
     this.emergencyExpenses();
   }
   }
 }
-
 function eventListeners(){
   const expenseForm = document.getElementById("expense-form");
   const incomeForm = document.getElementById("income-form");
@@ -413,7 +398,6 @@ function eventListeners(){
     event.preventDefault();
     ui.outputIncome();
   } )
-
   expenseForm.addEventListener("submit", function(event){
     event.preventDefault();
     ui.outputExpense();

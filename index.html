@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
+    <title>Budget App</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -15,11 +15,11 @@
         <div class="forms">
         <!-- Income Section -->
             <div class="income section">
-                <form  id="income-form">
+                <form class="income-form" id="income-form">
                     <h2>Income</h2>
-                    <label for="income">Enter your monthly income</label><br>
-                    <input type="number" id="income" step="0.01" min="0">
-                    <button id="income-enter">Enter</button><br>
+                    <p for="income">Enter your monthly income</p>
+                    <input class="input-boxes" type="number" id="income" step="0.01" min="0">
+                    <button class="income-button" id="income-enter">Enter</button>
                     <p class="income-message"></p>
                 </form>
             </div>
@@ -28,13 +28,13 @@
                 <h2>Add an expense</h2>
                 <form id="expense-form">
                     <label for="expenses">Enter an expense title</label><br>
-                    <input type="text" id="expense-title"><br>
+                    <input class="input-boxes" type="text" id="expense-title"><br>
                     <br>
                     <label for="expenses">Enter an expense amount</label><br>
-                    <input type="number" id="expense-amount" step="0.01" min="0">
+                    <input class="input-boxes" type="number" id="expense-amount" step="0.01" min="0">
                     <br><br>
                     <label for="category">Please choose a category</label><br>
-                    <select id="category">
+                    <select class="input-boxes" id="category">
                         <option></option>
                         <option value="1">Bills</option>
                         <option value="2">Grocery/Household</option>
@@ -42,7 +42,7 @@
                         <option value="4">Emergency</option>
                     </select>
                     <br><br>
-                    <button id="expense-enter">Enter</button>
+                    <button class="expense-button" id="expense-enter">Enter</button>
                     <p class="expense-message"></p><br>
                 </form>
             </div>
@@ -52,19 +52,19 @@
     <div class="summary-expenses">
         <div class="summary">
             <div class="summary-total">
-                <p>Income</p>
+                <h3>Income</h3>
                 <span class="icon"><i class="fas fa-money-bill"></i></span>
-                <span id="income-output" class="good"></span>
+                <h3 class="good">$<span id="income-output" class="good">0</span></h3>
             </div>
             <div class="summary-total">
-                <p>Expenses</p>
+                <h3>Expenses</h3>
                 <span class="icon"><i class="fas fa-dollar-sign"></i></span>
-                <p id="total-expenses" class="bad"></p>
+                <h3 class="bad">$<span id="total-expenses" class="bad">0</span></h3>
             </div>
             <div class="summary-total">            
-                <p>Balance</p>
+                <h3>Remaining</h3>
                 <span class="icon"><i class="far fa-credit-card"></i></span>
-                <p id="difference" class="difference-text"></p>
+                <h3 class="normal">$<span id="difference" class="difference-text">0</span></h3>
             </div>
         </div>
 

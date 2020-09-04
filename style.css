@@ -10,7 +10,8 @@ body{
     background: var(--mainWhite);
     color: var(--mainDark);
 }
-p, h2, h3, h4{
+h2, h3, h4, .normal{
+    font-weight: bold;
     color: var(--mainDark);
 }
 .title{
@@ -21,15 +22,15 @@ p, h2, h3, h4{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     margin: auto;
-    max-width: 1200px;
+    max-width: 800px;
     gap: 2rem;
     align-items: center;
 }
 .forms{
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
     margin: auto;
+    gap: 1rem;
 }
 .section{
     border: 0.15rem solid var(--mainRed);
@@ -39,6 +40,45 @@ p, h2, h3, h4{
 }
 .income{
     border: 0.15rem solid var(--mainGreen);
+    height: max-content;
+}
+.income-form{
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(10px, 1fr));
+}
+.input-boxes{
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+.income-button, .expense-button{
+    cursor: pointer;
+    width: max-content;
+    border-radius: 3px;
+    border: 0.1rem solid var(--mainGreen);
+    color: var(--mainGreen);
+    background: transparent;
+    font-size: 1rem;
+    padding:0.40rem .75rem;
+    margin-top: 1rem;
+    transition: 0.15s ease-in-out;
+}
+.income-button:hover{
+    background-color: var(--mainGreen);
+    color: white;
+}
+.expense-button{
+    border: 0.1rem solid var(--mainRed);
+    color: var(--mainRed);
+}
+.expense-button:hover{
+    background-color: var(--mainRed);
+    color: white;
 }
 .income-message, .expense-message{
     display: none;
@@ -51,12 +91,13 @@ p, h2, h3, h4{
 .summary-expenses{
     display: grid;
     align-self: baseline;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+    margin: auto;
 }
 .summary{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     align-content: center;
-    grid-template-columns: repeat(3, minmax(20px, 145px));
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
 }
 .summary-total{
     display:grid;
@@ -86,9 +127,8 @@ p, h2, h3, h4{
     text-align: left;
     text-transform: capitalize;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, minmax(3rem, 1fr));
     align-items: center;
-    height: 25px;
 }
 .bills{
     display: grid;
@@ -98,6 +138,11 @@ p, h2, h3, h4{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
+}
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
+    text-align: center;
 }
 .delete-modify{
     display: grid;
@@ -114,9 +159,24 @@ p, h2, h3, h4{
 #deletebutton, #modifyButton{
     cursor: pointer;
     font-style: normal;
+    transition: 0.15s ease-in-out;
 }
 .delete-button{
-    color: var(--mainRed)
+    color: var(--mainRed);
+    border: 1px solid var(--mainRed);
+    border-radius: 3px;
+}
+.modify-button{
+    border: 1px solid var(--mainBlue);
+    border-radius: 3px;
+}
+.delete-button:hover{
+    background-color: var(--mainRed);
+    color: white;
+}
+.modify-button:hover{
+    background-color: var(--mainBlue);
+    color: white;
 }
 
 
