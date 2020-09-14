@@ -33,6 +33,7 @@ h2, h3, h4, .normal{
     gap: 1rem;
 }
 .section{
+    background-color: #ead9d8;
     border: 0.15rem solid var(--mainRed);
     padding: 1rem;
     border-radius: 0.25rem;
@@ -41,6 +42,7 @@ h2, h3, h4, .normal{
 .income{
     border: 0.15rem solid var(--mainGreen);
     height: max-content;
+    background-color: #e6f3e4;
 }
 .income-form{
     display: grid;
@@ -129,12 +131,12 @@ h2, h3, h4, .normal{
     display: grid;
     grid-template-columns: repeat(3, minmax(3rem, 1fr));
     align-items: center;
+    border: 0.10rem solid;
 }
 .bills{
     display: grid;
 } 
 .header{
-    height: 55px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
@@ -143,6 +145,7 @@ h2, h3, h4, .normal{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
     text-align: center;
+    gap: .25rem;
 }
 .delete-modify{
     display: grid;
