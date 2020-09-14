@@ -34,7 +34,7 @@ class UI {
   showTotal(){
     const expense = this.totalExpense();  //totalExpense adds everything & returns a number 
     const total = parseFloat(this.incomeOutput.textContent) - expense;
-    difference.innerHTML = `${total}`; //display difference
+    difference.innerHTML = `${total.toFixed(2)}`; //display remaining amount
     if (total > 0 ){
       difference.classList.add("good");
       difference.classList.remove("bad");
@@ -91,7 +91,7 @@ class UI {
             const billsDiv = document.createElement('div');   //initialize here to allow creation of multiple lines
             billsDiv.innerHTML = `<div class="bill-item">
             <p> ${expense.title}</p>
-            <p>$${expense.amount}</p>
+            <p>$${expense.amount.toFixed(2)}</p>
             <div class="buttons">
               <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">Modify</i></a>
               <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
@@ -105,7 +105,7 @@ class UI {
           const groceryDiv = document.createElement('div');
           groceryDiv.innerHTML = `<div class="bill-item">
           <p> ${expense.title}</p>
-          <p> $${expense.amount}</p>
+          <p> $${expense.amount.toFixed(2)}</p>
           <div class="buttons">
           <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">Modify</i></a>
           <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
@@ -119,7 +119,7 @@ class UI {
           const funDiv = document.createElement("div");
           funDiv.innerHTML = `<div class="bill-item">
           <p> ${expense.title}</p>
-          <p> $${expense.amount}</p>
+          <p> $${expense.amount.toFixed(2)}</p>
           <div class="buttons">
           <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">Modify</i></a>
           <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
@@ -133,7 +133,7 @@ class UI {
           const emergencyDiv = document.createElement("div");
           emergencyDiv.innerHTML = `<div class="bill-item">
           <p> ${expense.title}</p>
-          <p> $${expense.amount}</p>
+          <p> $${expense.amount.toFixed(2)}</p>
           <div class="buttons">
           <a class="modify-button" data-id="${expense.id}"><i id="modifyButton">Modify</i></a>
           <a class="delete-button" data-id="${expense.id}"><i id="deleteButton">Delete</i></a>
@@ -158,7 +158,7 @@ class UI {
     }, 0);
     }
     //Show the total on the output
-  this.billsTotal.innerHTML = `<h4>Total: $${totalBills}</h4>`;
+  this.billsTotal.innerHTML = `<h4>Total: $${totalBills.toFixed(2)}</h4>`;
   return totalBills;
   }
   groceryExpenses(){
@@ -170,7 +170,7 @@ class UI {
     }, 0);
     }
     //Show the total on the output
-    this.groceryTotal.innerHTML = `<h4>Total: $${totalGrocery}</h4>`;
+    this.groceryTotal.innerHTML = `<h4>Total: $${totalGrocery.toFixed(2)}</h4>`;
     return totalGrocery;
   }
   funExpenses(){
@@ -182,7 +182,7 @@ class UI {
     }, 0);
     }
     //Show the total on the output
-  this.funTotal.innerHTML = `<h4>Total: $${totalFun}</h4>`;
+  this.funTotal.innerHTML = `<h4>Total: $${totalFun.toFixed(2)}</h4>`;
   return totalFun;
   }
   emergencyExpenses(){
@@ -194,7 +194,7 @@ class UI {
     }, 0);
     }
     //Show the total on the output
-  this.emergencyTotal.innerHTML = `<h4>Total: $${totalEmergency}</h4>`;
+  this.emergencyTotal.innerHTML = `<h4>Total: $${totalEmergency.toFixed(2)}</h4>`;
   return totalEmergency;
   }
   /////////////////////////////////////////////////////////////////////////////////
@@ -208,7 +208,7 @@ class UI {
     }, 0);
     }
     //Show the total on the output
-  this.totalExpenses.innerHTML = `${total}`;
+  this.totalExpenses.innerHTML = `${total.toFixed(2)}`;
   return total;
   }
   //Calculate left over money!
