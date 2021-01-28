@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 </head>
@@ -12,91 +12,92 @@
         <h1>Monthly Budget App</h1><i>Work in progress</i>
     </div>
     <div class="container">
-        <div class="forms">
-        <!-- Income Section -->
-            <div class="income section">
-                <form class="income-form" id="income-form">
-                    <h2>Income</h2>
-                    <p for="income">Enter your monthly income</p>
-                    <input class="input-boxes" type="number" id="income" step="0.01" min="0">
-                    <button class="income-button" id="income-enter">Enter</button>
-                    <p class="income-message"></p>
-                </form>
-            </div>
-            <!-- Add expenses section -->
-            <div class="expense section">
-                <h2>Add an expense</h2>
-                <form id="expense-form">
-                    <label for="expenses">Enter an expense title</label><br>
-                    <input class="input-boxes" type="text" id="expense-title"><br>
-                    <br>
-                    <label for="expenses">Enter an expense amount</label><br>
-                    <input class="input-boxes" type="number" id="expense-amount" step="0.01" min="0">
-                    <br><br>
-                    <label for="category">Please choose a category</label><br>
-                    <select class="input-boxes" id="category">
-                        <option></option>
-                        <option value="1">Bills</option>
-                        <option value="2">Grocery/Household</option>
-                        <option value="3">Fun</option>
-                        <option value="4">Emergency</option>
-                    </select>
-                    <br><br>
-                    <button class="expense-button" id="expense-enter">Enter</button>
-                    <p class="expense-message"></p><br>
-                </form>
-            </div>
-    </div>
-
-    <!-- Summary Section -->
-    <div class="summary-expenses">
-        <div class="summary">
-            <div class="summary-total">
-                <h3>Income</h3>
-                <span class="icon"><i class="fas fa-money-bill"></i></span>
-                <h3 class="good">$<span id="income-output" class="good">0</span></h3>
-            </div>
-            <div class="summary-total">
-                <h3>Expenses</h3>
-                <span class="icon"><i class="fas fa-dollar-sign"></i></span>
-                <h3 class="bad">$<span id="total-expenses" class="bad">0</span></h3>
-            </div>
-            <div class="summary-total">            
-                <h3>Remaining</h3>
-                <span class="icon"><i class="far fa-credit-card"></i></span>
-                <h3 class="normal">$<span id="difference" class="difference-text">0</span></h3>
-            </div>
+        <div class="forms-bg"> 
+           
+                <!-- Income Section -->
+                <div class="income section">
+                    <form class="income-form" id="income-form">
+                        <h2>Income</h2>
+                        <p for="income">Enter your monthly income</p>
+                        <input class="input-boxes" type="number" id="income" step="0.01" min="0" placeholder="$3000">
+                        <button class="income-button" id="income-enter">Enter</button>
+                        <p class="income-message"></p>
+                    </form>
+                </div>
+                <!-- Add expenses section -->
+                <div class="expense section">
+                    <h2>Add an expense</h2>
+                    <form id="expense-form">
+                        <label for="expenses">Enter an expense title</label><br>
+                        <input class="input-boxes" type="text" id="expense-title" placeholder="ie. Utility Bill"><br>
+                        <br>
+                        <label for="expenses">Enter an expense amount</label><br>
+                        <input class="input-boxes" placeholder="50.00" type="number" id="expense-amount" step="0.01" min="0">
+                        <br><br>
+                        <label for="category">Please choose a category</label><br>
+                        <select class="input-boxes" id="category">
+                            <option></option>
+                            <option value="1">Bills</option>
+                            <option value="2">Grocery/Household</option>
+                            <option value="3">Fun</option>
+                            <option value="4">Emergency</option>
+                        </select>
+                        <br><br>
+                        <button class="expense-button" id="expense-enter">Enter</button>
+                        <p class="expense-message"></p><br>
+                    </form>
+                </div>
+           
         </div>
+        
+        <!-- Summary Section -->
+        <div class="summary-expenses">
+            <div class="summary">
+                <div class="summary-total">
+                    <h3>Income</h3>
+                    <span class="icon circle"><i class="fas fa-money-bill"></i></span>
+                    <h3 class="good">$<span id="income-output" class="good">0</span></h3>
+                </div>
+                <div class="summary-total">
+                    <h3>Expenses</h3>
+                    <span class="icon circle"><i class="fas fa-dollar-sign"></i></span>
+                    <h3 class="bad">$<span id="total-expenses" class="bad">0</span></h3>
+                </div>
+                <div class="summary-total">            
+                    <h3>Remaining</h3>
+                    <span class="icon circle"><i class="far fa-credit-card"></i></span>
+                    <h3 class="normal">$<span id="difference" class="difference-text">0</span></h3>
+                </div>
+            </div>
 
-        <!-- Expense items section -->
-        <div class="expense-categories" id="expense-categories">
-
-            <h3>Expenses</h3>
-                <div class="header">
+            <!-- Expense items section -->
+            <div class="expenses-section">
+            <h2>Expenses</h2>
+            <div class="expense-categories" id="expense-categories">
+                <div class="expense-item">
                     <h4>Bills</h4>
+                    <div class="bills" id="bills">
+                    </div>
                     <p id="bills-total"></p>
                 </div>
-                <div class="bills" id="bills">
-                    <!-- <div class="bill-item">
-                    <p> -${expense.title} $${expense.amount}</p>
-                    <a href="" ><i id="deleteButton">d</i></a>
-                </div> -->
-                </div>
-                <div class="header">
+                <div class="expense-item">
                     <h4>Grocery/Household</h4>
+                    <div class="bills" id="grocery">
+                    </div>
                     <p id="grocery-total"></p>
                 </div>
-                <div class="grocery bills" id="grocery"></div>
-                <div class="header">
+                <div class="expense-item">
                     <h4>Fun</h4>
+                    <div class="bills" id="fun">
+                    </div>
                     <p id="fun-total"></p>
                 </div>
-                <div class="fun bills" id="fun"></div>
-                <div class="header">
+                <div class="expense-item">
                     <h4>Emergency</h4>
+                    <div class="bills" id="emergency">
+                    </div>
                     <p id="emergency-total"></p>
                 </div>
-                <div class="emergency bills" id="emergency"></div>
             </div>
         </div>
     </div>
