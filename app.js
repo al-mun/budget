@@ -87,6 +87,7 @@ class UI {
         };
         this.expenseID++;        //increment the id everytime this loops
         this.expenseList.push(expense);  //add to the array  
+
         if (this.option === "Bills"){
             const billsDiv = document.createElement('div');   //initialize here to allow creation of multiple lines
             billsDiv.innerHTML = `<div class="bill-item">
