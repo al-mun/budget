@@ -1,4 +1,6 @@
 # budget
+# Page can be seen on http://munoza.com/budget
+
 Simple budget calculator
 
 Enter your monthly salary or wage, then begin entering your expenses. Remaining budget will be displayed totally, or individually based on category.
@@ -10,5 +12,5 @@ and it appends the information as a div in the expense list.
 
 Modify and Delete button are working now.
 
-Page can be seen on munoza.com/budget
+
 
